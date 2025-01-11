@@ -2,6 +2,7 @@ package org.example;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -21,7 +22,7 @@ class CatTest {
         System.gc();
         System.setOut(System.out);
     }
-    @org.junit.jupiter.api.Test
+    @Test
     void eat() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
@@ -29,7 +30,7 @@ class CatTest {
         assertTrue(outputStream.toString().contains("smack smack"), "Output should indicate 'smack smack");
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void sleep() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
@@ -38,7 +39,7 @@ class CatTest {
         assertFalse(outputStream.toString().contains("Illegal argument"), "Output should not contain an IllegalArgumentException message");
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void makeSound() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
@@ -46,7 +47,7 @@ class CatTest {
         assertTrue(outputStream.toString().contains("meow"));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void uniqueBehaviour() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
@@ -55,7 +56,7 @@ class CatTest {
         assertTrue(outputStream.toString().contains("rip and tear\n"));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void scratchFurniture() {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
@@ -63,5 +64,30 @@ class CatTest {
         String mDebug = outputStream.toString();
         assertTrue(outputStream.toString().contains("rip and tear\n"));
     }
+
+    @Test
+    void sleepWithInterrupt() {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+        Thread.currentThread().interrupt(); // Simulate an interrupt before sleep
+        kitty.sleep();
+        assertTrue(outputStream.toString().contains("Interrupt exception"), "Output should handle InterruptedException gracefully");
+    }
+
+    @Test
+    void nullPointerTest() {
+        Cat pKitty = null;
+        assertThrows(NullPointerException.class, () -> {
+            pKitty.displayInfo();  // This will throw a NullPointerException
+        });
+    }
+
+    @Test
+    void testNullName() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Cat(null, 2); // Assume name cannot be null
+        });
+    }
+
 
 }

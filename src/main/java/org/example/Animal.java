@@ -18,6 +18,9 @@ abstract class Animal {
      * Constructor method to define name and age
      */
     Animal(String name, int age){
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
         this.name = name;
         this.age = age;
     }

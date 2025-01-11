@@ -52,7 +52,6 @@ class CatTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
         kitty.uniqueBehaviour();
-        String mDebug = outputStream.toString();
         assertTrue(outputStream.toString().contains("rip and tear\n"));
     }
 
@@ -61,7 +60,6 @@ class CatTest {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
         kitty.scratchFurniture();
-        String mDebug = outputStream.toString();
         assertTrue(outputStream.toString().contains("rip and tear\n"));
     }
 

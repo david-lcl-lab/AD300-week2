@@ -72,8 +72,10 @@ class CatTest {
         assertTrue(outputStream.toString().contains("Interrupt exception"), "Output should handle InterruptedException gracefully");
     }
 
+    @SuppressWarnings("Null Pointer Exception")
     @Test
     void nullPointerTest() {
+
         Cat pKitty = null;
         assertThrows(NullPointerException.class, () -> {
             pKitty.displayInfo();  // This will throw a NullPointerException

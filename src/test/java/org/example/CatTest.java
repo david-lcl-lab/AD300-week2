@@ -76,7 +76,7 @@ class CatTest {
     @Test
     void nullPointerTest() {
         assertThrows(IllegalArgumentException.class, () -> {
-            Cat pKitty = new Cat(null, 2);;  // Illegal construction with null name
+            Cat pKitty = new Cat(null, 2);  // Illegal construction with null name
         });
     }
 

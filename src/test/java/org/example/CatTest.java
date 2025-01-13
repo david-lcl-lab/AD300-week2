@@ -75,10 +75,8 @@ class CatTest {
     @SuppressWarnings("Null Pointer Exception")
     @Test
     void nullPointerTest() {
-
-        Cat pKitty = null;
-        assertThrows(NullPointerException.class, () -> {
-            pKitty.displayInfo();  // This will throw a NullPointerException
+        assertThrows(IllegalArgumentException.class, () -> {
+            Cat pKitty = new Cat(null, 2);;  // Illegal construction with null name
         });
     }
 

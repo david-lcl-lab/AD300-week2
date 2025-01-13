@@ -23,6 +23,14 @@ An initial suite of tests is included for `Cat`.
 Run tests using
 `mvn test`
 
+## CI
+This project uses a Git Hub action defined in `.github/workflows/maven.yml`
+The `maven.yml` will then run `mvn verify`.
+
+*Note:* The Git Hub runner uses Adoptium's Temurin jdk.
+
+
+
 ## Dependencies
 - OpenJDK 21.0.5
 - Maven 3.87

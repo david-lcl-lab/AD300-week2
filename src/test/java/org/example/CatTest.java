@@ -81,9 +81,17 @@ class CatTest {
     }
 
     @Test
-    void testNullName() {
+    void negativeAgeTest() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Cat(null, 2); // Assume name cannot be null
+            new Cat("Bob", -1); // Assume name cannot be null
+        });
+    }
+
+
+    @Test
+    void ageOutOfBoundsTest() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Cat("Bob", 251); // Assume name cannot be null
         });
     }
 

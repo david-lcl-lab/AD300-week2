@@ -13,6 +13,7 @@ import java.lang.reflect.Method;
 abstract class Animal {
     String name;
     int age;
+    int MAX_AGE = 250;
 
     /**
      * Constructor method to define name and age
@@ -21,6 +22,11 @@ abstract class Animal {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
+
+        if ((age < 0) | (age > MAX_AGE)) {
+            throw new IllegalArgumentException("Age must be between 0 and 150");
+        }
+
         this.name = name;
         this.age = age;
     }

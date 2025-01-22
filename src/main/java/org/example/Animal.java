@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
  * and uniqueBehaviour to define behaviors specific to different types of animals.
  */
 abstract class Animal {
-    String name;
+    protected String name;
     int age;
     int MAX_AGE = 250;
 
